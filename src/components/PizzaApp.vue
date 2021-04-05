@@ -1,21 +1,23 @@
 <template>
     <div class="pizza">
         <div v-for="deal in deals" :key="deal.id">
-            {{deal.id}}31
+            <pizza-deal :id="deal.id"></pizza-deal>
         </div>
     </div>
 </template>
 <script>
+import PizzaDeal from './PizzaDeal.vue';
 
 export default{
     name: 'PizzaApp',
+    components: {
+        PizzaDeal
+        
+    },
     computed: {
         deals(){
-            return this.$store.state.deals;
+            return this.$store.getters.deals;
         },
-        numberOfDeals(){
-            return this.$store.getters.numberOfDeals;
-        }
     }
 }
 </script>

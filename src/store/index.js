@@ -21,13 +21,21 @@ export default new Vuex.Store({
       },
       {
         id: 4,
-        diameter: 13
+        pies: [
+          {
+            id: 5,
+            diameter: 13
+          }
+        ]
       }
     ]
   },
   getters: {
-    numberOfDeals(state){
-      return state.deals.length;
+    deals(state){
+      return state.deals;
+    },
+    getDeal(state){
+      return dealId => state.deals.find( d => d.id === dealId);
     }
   },
   mutations: {

@@ -1,6 +1,7 @@
 <template>
 <div>
   <pizza-app></pizza-app>
+  40
 </div>
 </template>
 
