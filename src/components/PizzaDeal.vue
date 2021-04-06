@@ -28,3 +28,12 @@ export default{
     }
 }
 </script>
+
+<style lang="scss">
+    .pizzaDeal{
+        background: pink;
+        display: flex;
+        margin-bottom: 24px;
+        padding: 12px;
+    }
+</style>

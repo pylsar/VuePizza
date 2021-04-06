@@ -36,6 +36,9 @@ export default new Vuex.Store({
     },
     getDeal(state){
       return dealId => state.deals.find( d => d.id === dealId);
+    },
+    getPie(state){
+      return pieId => [].concat(...state.deals.map( d => d.pies)).find( p => p.id === pieId);
     }
   },
   mutations: {

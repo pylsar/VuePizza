@@ -1,7 +1,7 @@
 <template>
 <div>
   <pizza-app></pizza-app>
-  40
+  48
 </div>
 </template>
 
@@ -15,7 +15,10 @@ export default{
 }
 </script>
 <style lang="scss">
-
+*{
+  margin: 0;
+  padding: 0;
+}
 
 
 </style>
