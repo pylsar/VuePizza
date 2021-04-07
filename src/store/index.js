@@ -42,8 +42,21 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    addDeal(state, deal){
+      state.deals.push(deal);
+    },
+    deleteDeal(){},
+    addPie(){},
+    deletePie(){},
+    editPie(state, {pie, diameter = pie.diameter}){
+      pie.diameter = diameter
+    }
   },
   actions: {
+    changePieSizeBy({commit},{pie, delta}){
+      const newDeameter = pie.deameter + delta;
+      commit('editPie', {pie, diameter: newDeameter});
+    }
   },
   modules: {
   }
