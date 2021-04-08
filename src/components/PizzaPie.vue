@@ -1,7 +1,9 @@
 <template>
     <div classs="pizzaPie">
         <div class="pizzaPie__item">
-            <div class="pizzaPie__diameter">
+            <div class="pizzaPie__diameter" 
+                :style="[sizeStyle]"
+            >
                 {{pie.diameter}} см
             </div>
             <div class="pizzaPie__arrows">
@@ -23,6 +25,13 @@ export default{
     computed: {
         pie(){
             return this.$store.getters.getPie(this.id);
+        },
+        sizeStyle(){
+            const pixelDiameter = this.pie.diameter * 10;
+            return{
+                width: pixelDiameter + 'px',
+                height: pixelDiameter + 'px'
+            }
         }
     },
     methods: {
@@ -39,8 +48,6 @@ export default{
 <style lang="scss">
    .pizzaPie{
        &__item{
-           width: 84px;
-           height: 84px;
            border-radius: 50%;
            background: skyblue;
            border: 2px solid black;

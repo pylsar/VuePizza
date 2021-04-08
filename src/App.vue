@@ -1,7 +1,7 @@
 <template>
 <div>
   <pizza-app></pizza-app>
-  1.7
+  1.21
 </div>
 </template>
 
