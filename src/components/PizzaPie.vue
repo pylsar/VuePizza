@@ -6,11 +6,12 @@
             >
                 {{pie.diameter}} см
             </div>
-            <div class="pizzaPie__arrows">
+           
+        </div>
+         <div class="pizzaPie__arrows">
                 <button @click="decreaseSize">↓</button>
                 <button @click="increaseSize">↑</button>
             </div>
-        </div>    
     </div>
 </template>
 <script>
@@ -73,7 +74,7 @@ export default{
                outline: none;
                background: none;
                font-weight: 700;
-               color: white;
+               color: black;
                &:first-child{
                    font-size: 10px;
                }

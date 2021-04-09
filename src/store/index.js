@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import markId from '../services/markId';
 
 Vue.use(Vuex)
 
@@ -7,23 +8,23 @@ export default new Vuex.Store({
   state: {
     deals:[
       {
-        id: 1,
+        id: markId(),
         pies: [
           {
-            id: 2, 
+            id: markId(), 
             diameter: 10
           },
           {
-            id: 3, 
+            id: markId(), 
             diameter: 10
           }
         ]
       },
       {
-        id: 4,
+        id: markId(),
         pies: [
           {
-            id: 5,
+            id: markId(),
             diameter: 13
           }
         ]
@@ -45,10 +46,13 @@ export default new Vuex.Store({
     addDeal(state, deal){
       state.deals.push(deal);
     },
+
     deleteDeal(){},
+
     addPie(state, {deal, pie}){
       deal.pies.push(pie);
     },
+
     deletePie(){},
     editPie(state, {pie, diameter = pie.diameter}){
       pie.diameter = diameter
@@ -57,7 +61,7 @@ export default new Vuex.Store({
   actions: {
     createPie({commit}, {deal}){
       const pie = {
-        id: 0,
+        id: markId,
         diameter: 10
       };
       commit('addPie', {deal, pie});

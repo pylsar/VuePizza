@@ -1,7 +1,7 @@
 <template>
 <div>
   <pizza-app></pizza-app>
-  1.21
+  1.27
 </div>
 </template>
 
@@ -18,6 +18,7 @@ export default{
 *{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 
