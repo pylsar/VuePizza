@@ -9,9 +9,9 @@
            
         </div>
          <div class="pizzaPie__arrows">
-                <button @click="decreaseSize">↓</button>
-                <button @click="increaseSize">↑</button>
-            </div>
+            <button @click="decreaseSize">↓</button>
+            <button @click="increaseSize">↑</button>
+        </div>
     </div>
 </template>
 <script>

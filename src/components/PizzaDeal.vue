@@ -10,9 +10,11 @@
             +
             </button>
         </div>
-        <div class="pizza_right">
-1
+        <div class="pizza__right">
+            <div>25%</div>
+            <div>bigger</div>
         </div>
+        <div class="pizza__name">Pizza Options A</div>
     </div>
 </template>
 <script>
@@ -46,17 +48,31 @@ export default{
 
 <style lang="scss">
     .pizzaDeal{
-        background: pink;
         display: flex;
-        // align-items: center;
         justify-content: space-between;
         margin-bottom: 24px;
-        padding: 12px;
+        // padding: 12px;
+        min-height: 200px;
+        position: relative;
+        overflow: hidden;
     }
     .pizza{
         &__left{
             display: flex;
             align-items: center;
+            flex: 1;
+            background: pink;
+        }
+        &__right{
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: orange;
+            font-size: 30px;
+            line-height: 1.5;
+            transform: skew(-10deg, 0) scale(1.2);
         }
         &__plus{
             padding: 6px;
@@ -71,6 +87,14 @@ export default{
             align-items: center;
             cursor: pointer;
             font-size: 24px;
+            font-weight: 700;
+        }
+        &__name{
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: orange;
+            font-size: 30px;
             font-weight: 700;
         }
     }
