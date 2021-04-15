@@ -59,9 +59,17 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    createDeal({commit, dispatch}){
+      const deal = {
+        id: markId(),
+        pies: []
+      }
+      commit('addDeal', deal);
+      dispatch('createPie', {deal});
+    },
     createPie({commit}, {deal}){
       const pie = {
-        id: markId,
+        id: markId(),
         diameter: 10
       };
       commit('addPie', {deal, pie});

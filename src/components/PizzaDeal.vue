@@ -1,14 +1,10 @@
 <template>
     <div class="pizzaDeal">
         <div class="pizza__left">
-            <div v-for="pie in pies" :key="pie.id">
+            <div v-for="(pie, index) in pies" :key="index">
                 <pizza-pie :id="pie.id"></pizza-pie>
             </div>
-            <button class="pizza__plus"
-                @click="createPie"    
-            >
-            +
-            </button>
+            <add-button @add="createPie"/>
         </div>
         <div class="pizza__right">
             <div>25%</div>
@@ -19,10 +15,12 @@
 </template>
 <script>
 import PizzaPie from './PizzaPie';
+import AddButton from './AddButton';
 export default{
     name: 'PizzaDeal',
     components:{
-        PizzaPie
+        PizzaPie,
+        AddButton
     },
     props: {
         id: {
@@ -100,3 +98,5 @@ export default{
     }
     
 </style>
+
+
