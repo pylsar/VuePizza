@@ -9,6 +9,11 @@
         <div class="pizza__right">
             <div>25%</div>
             <div>bigger</div>
+            <button 
+                class="pizza__delete"
+                @click="deleteDeal"
+            >
+            -</button>
         </div>
         <div class="pizza__name">Pizza Options A</div>
     </div>
@@ -39,6 +44,9 @@ export default{
     methods:{
         createPie(){
             this.$store.dispatch('createPie', {deal: this.deal,})
+        },
+        deleteDeal(){
+            this.$store.dispatch('deleteDeal', {deal: this.deal});
         }
     }
 }
@@ -94,6 +102,26 @@ export default{
             background: orange;
             font-size: 30px;
             font-weight: 700;
+        }
+        &__delete{
+            position: absolute;
+            top: 15%;
+            right: 15%;
+            background: red;
+            color: white;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 1;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            outline: none;
+            border-radius: 50%;
+            transform: skew(10deg, 0);
+            cursor: pointer;
         }
     }
     

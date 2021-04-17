@@ -12,6 +12,10 @@
             <button @click="decreaseSize">↓</button>
             <button @click="increaseSize">↑</button>
         </div>
+        <button 
+            class="pizzaPie__minus"
+            @click="deletePie"
+        >-</button>
     </div>
 </template>
 <script>
@@ -41,6 +45,9 @@ export default{
         },
         decreaseSize(){
             this.$store.dispatch("changePieSizeBy", {pie: this.pie, delta: -0.5});
+        },
+        deletePie(){
+            this.$store.dispatch('deletePie', {pie: this.pie});
         }
     }
 }
@@ -79,6 +86,22 @@ export default{
                    font-size: 10px;
                }
            }
+       }
+       &__minus{
+           width: 30px;
+           height: 30px;
+           border: none;
+           outline: none;
+           border-radius: 50%;
+           background: red;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           font-size: 20px;
+           font-weight: 700;
+           color: white;
+           cursor: pointer;
+           margin: 0 auto;
        }
    } 
 </style>
