@@ -35,9 +35,11 @@ export default new Vuex.Store({
     deals(state){
       return state.deals;
     },
+
     getDeal(state){
       return dealId => state.deals.find( d => d.id === dealId);
     },
+
     getPie(state, getters){
       
       return pieId =>{
@@ -45,9 +47,11 @@ export default new Vuex.Store({
         return deal.pies.find( p => p.id === pieId);
       } 
     },
+
     getDealContainingPieId(state){
       return pieId => state.deals.find(d => d.pies.some(p => p.id === pieId));
     },
+
     stats(state){
       const circleArea = radius => Math.PI * radius * radius;
       const sum = numbers => numbers.reduce((acc, number) => acc + number, 0);
@@ -64,15 +68,26 @@ export default new Vuex.Store({
         stat.isLargest = index === 0;
 
         const comparisonStat = index === 0 ? stats[1] : stats[0];
-        stat.diff = ( stat.area - comparisonStat.area) / comparisonStat.area;
+        stat.diff = Math.abs(( stat.area - comparisonStat.area) / comparisonStat.area);
       });
 
       return stats.reduce((acc, stat) => {
           acc[stat.dealId] = stat;
           return acc;
       }, {});
+    },
+
+    getDealStats(state, getters){
+      return deal => getters.stats[deal.id];
+    },
+    getDealName(state){
+      return deal => {
+        const index = state.deals.indexOf(deal);
+        return String.fromCharCode("A".charCodeAt(0) + index);
+      }  
     }
   },
+
   mutations: {
     addDeal(state, deal){
       state.deals.push(deal);
@@ -91,10 +106,12 @@ export default new Vuex.Store({
       const index = deal.pies.indexOf(pie);
       deal.pies.splice(index, 1);
     },
+
     editPie(state, {pie, diameter = pie.diameter}){
       pie.diameter = diameter
     }
   },
+
   actions: {
     createDeal({commit, dispatch}){
       const deal = {
@@ -104,9 +121,11 @@ export default new Vuex.Store({
       commit('addDeal', deal);
       dispatch('createPie', {deal});
     },
+
     deleteDeal({commit}, {deal}){
       commit('removeDeal', deal);
     },
+
     createPie({commit}, {deal}){
       const pie = {
         id: markId(),
@@ -114,15 +133,18 @@ export default new Vuex.Store({
       };
       commit('addPie', {deal, pie});
     },
+
     deletePie({commit, getters},{pie}){
       const deal = getters.getDealContainingPieId(pie.id);
       commit('removePie', {deal, pie});
     },
+
     changePieSizeBy({commit},{pie, delta}){
       const newDiameter = pie.diameter + delta;
       commit('editPie', {pie, diameter: newDiameter});
     }
   },
+
   modules: {
   }
 })

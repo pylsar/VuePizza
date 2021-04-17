@@ -7,20 +7,21 @@
             <add-button @add="createPie"/>
         </div>
         <div class="pizza__right">
-            <div>25%</div>
-            <div>bigger</div>
+            <div>{{stats.diff | percentege(1)}}</div>
+            <div>{{isLargest ? 'bigger' : 'smaller'}}</div>
             <button 
                 class="pizza__delete"
                 @click="deleteDeal"
             >
             -</button>
         </div>
-        <div class="pizza__name">Pizza Options A</div>
+        <div class="pizza__name">Pizza Options {{dealName}}</div>
     </div>
 </template>
 <script>
 import PizzaPie from './PizzaPie';
 import AddButton from './AddButton';
+import percentege from '../filters/percentege.js';
 export default{
     name: 'PizzaDeal',
     components:{
@@ -37,8 +38,20 @@ export default{
         deal(){
             return this.$store.getters.getDeal(this.id);
         },
+
+        stats(){
+            return this.$store.getters.getDealStats(this.deal);
+        },
+
+        isLargest(){
+            return this.stats.isLargest;
+        },
+
         pies(){
             return this.deal.pies;
+        },
+        dealName(){
+            return this.$store.getters.getDealName(this.deal);
         }
     },
     methods:{
@@ -48,6 +61,9 @@ export default{
         deleteDeal(){
             this.$store.dispatch('deleteDeal', {deal: this.deal});
         }
+    },
+    filters: {
+        percentege
     }
 }
 </script>
@@ -57,7 +73,6 @@ export default{
         display: flex;
         justify-content: space-between;
         margin-bottom: 24px;
-        // padding: 12px;
         min-height: 200px;
         position: relative;
         overflow: hidden;
